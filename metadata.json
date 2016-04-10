@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "Marc Deop",
   "summary": "Provision RatticDB Password Manager",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "source": "https://github.com/marcdeop/ratticdb",
   "project_page": "https://github.com/marcdeop/ratticdb",
   "issues_url": "https://github.com/marcdeop/ratticdb/issues",
