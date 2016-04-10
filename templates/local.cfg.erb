@@ -1,0 +1,39 @@
+#############################################
+#                                           #
+#  FILE MANAGED BY PUPPET: DO NOT EDIT!!!   #
+#                                           #
+#############################################
+
+[ratticweb]
+debug = False
+secretkey = [enter a string of random secret data]
+hostname = <%= @url %>
+
+[filepaths]
+static = <%= @appFolder %>/static
+
+[database]
+engine = django.db.backends.mysql
+name = <%= @dbName %>
+user = <%= @dbUser %>
+password = <%= @dbUserPwd %>
+host = <%= @dbHost %>
+port = <%= @dbPort %>
+
+<% if @ldap %>
+[ldap]
+# LDAP server details
+uri = ldap://localhost
+
+# User parameters
+userbase = ou=users,dc=example,dc=com
+userfilter = (uid=%(user)s)
+
+# Set up the basic group parameters.
+groupbase = ou=django,ou=groups,dc=example,dc=com
+groupfilter = (objectClass=groupOfNames)
+grouptype = GroupOfNamesType
+
+# How do I find staff
+staff = cn=staff,ou=groups,dc=example,dc=com
+<% end %>
