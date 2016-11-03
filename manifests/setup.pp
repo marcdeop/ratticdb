@@ -1,14 +1,21 @@
 #
 class ratticdb::setup {
-  $url       = $::ratticdb::url
-  $appFolder = $::ratticdb::appFolder
-  $ldap      = $::ratticdb::ldap
-  $dbName    = $::ratticdb::dbName
-  $dbUser    = $::ratticdb::dbUser
-  $dbUserPwd = $::ratticdb::dbUserPwd
-  $dbHost    = $::ratticdb::dbHost
-  $dbPort    = $::ratticdb::dbPort
-  $version   = $::ratticdb::version
+  $url         = $::ratticdb::url
+  $appFolder   = $::ratticdb::appFolder
+  $ldap        = $::ratticdb::ldap
+  $dbName      = $::ratticdb::dbName
+  $dbUser      = $::ratticdb::dbUser
+  $dbUserPwd   = $::ratticdb::dbUserPwd
+  $dbHost      = $::ratticdb::dbHost
+  $dbPort      = $::ratticdb::dbPort
+  $version     = $::ratticdb::version
+  $ldapServer  = $::ratticdb::ldapServer
+  $userBase    = $::ratticdb::userBase
+  $userFilter  = $::ratticdb::userFilter
+  $groupBase   = $::ratticdb::groupBase
+  $groupFilter = $::ratticdb::groupFilter
+  $groupType   = $::ratticdb::groupType
+  $staff       = $::ratticdb::staff
 
   $baseDir = dirname($appFolder)
 

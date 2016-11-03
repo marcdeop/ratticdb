@@ -42,6 +42,13 @@ class ratticdb (
   $url            = 'ratticdb.example.org',
   $version        = '1.3.1',
   $ldap           = false,
+  $ldapServer     = 'ldap.example.org',
+  $userBase       = 'ou=users,dc=example,dc=com',
+  $userFilter     = '(uid=%(user)s)',
+  $groupBase      = 'ou=django,ou=groups,dc=example,dc=com',
+  $groupFilter    = '(objectClass=groupOfNames)',
+  $groupType      = 'GroupOfNamesType',
+  $staff          = 'cn=staff,ou=groups,dc=example,dc=com',
   $dbName         = 'ratticdb',
   $dbUser         = 'ratticDbUser',
   $dbUserPwd      = 'ratticDbUserPassword',
@@ -76,6 +83,31 @@ class ratticdb (
   if !is_bool($ldap) {
     fail('ldap must be a boolean')
   }
+
+  if !is_domain_name($ldapServer) {
+    fail('ldapServer must be a valid domain name')
+  }
+
+  if !is_string($userBase) {
+    fail('userBase must be a valid string')
+  }
+
+  if !is_string($userFilter) {
+    fail('userFilter must be a valid string')
+  }
+
+  if !is_string($groupBase) {
+    fail('groupBase must be a valid string')
+  }
+
+  if !is_string($groupFilter) {
+    fail('groupFilter must be a valid string')
+  }
+
+  if !is_string($groupType) {
+    fail('groupType must be a valid string')
+  }
+
   if !is_domain_name($url) {
     fail('url must be a valid domain name')
   }

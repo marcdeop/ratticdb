@@ -84,4 +84,53 @@ describe 'ratticdb' do
     end
   end
 
+  context 'ldapServer => wrong Domain' do
+    let(:params) { {:ldapServer => 'wrong Domain' } }
+    it do
+      is_expected.to raise_error(/ldapServer must be a valid domain name/)
+    end
+  end
+
+  context 'userBase => wrong userBase' do
+    let(:params) { {:userBase => :undef } }
+    it do
+      is_expected.to raise_error(/userBase must be a valid string/)
+    end
+  end
+
+  context 'userFilter => wrong userFilter' do
+    let(:params) { {:userFilter => nil } }
+    it do
+      is_expected.to raise_error(/userFilter must be a valid string/)
+    end
+  end
+
+  context 'groupBase => wrong groupbase' do
+    let(:params) { {:groupBase => nil } }
+    it do
+      is_expected.to raise_error(/groupBase must be a valid string/)
+    end
+  end
+
+  context 'groupFilter => wrong groupFilter' do
+    let(:params) { {:groupFilter => nil } }
+    it do
+      is_expected.to raise_error(/groupFilter must be a valid string/)
+    end
+  end
+
+  context 'groupType => wrong groupType' do
+    let(:params) { {:groupType => nil } }
+    it do
+      is_expected.to raise_error(/groupType must be a valid string/)
+    end
+  end
+
+  context 'staff => wrong staff' do
+    let(:params) { {:staff => nil } }
+    it do
+      is_expected.to raise_error(/staff must be a valid string/)
+    end
+  end
+
 end

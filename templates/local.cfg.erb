@@ -23,17 +23,18 @@ port = <%= @dbPort %>
 <% if @ldap %>
 [ldap]
 # LDAP server details
-uri = ldap://localhost
+uri = ldaps://<%= @ldapServer %>
 
 # User parameters
-userbase = ou=users,dc=example,dc=com
-userfilter = (uid=%(user)s)
+userbase = <%= @userBase %>
+userfilter = <%= @userFilter %>
 
 # Set up the basic group parameters.
-groupbase = ou=django,ou=groups,dc=example,dc=com
-groupfilter = (objectClass=groupOfNames)
-grouptype = GroupOfNamesType
+groupbase = <%= @groupBase %>
+groupfilter = <%= @groupFilter %>
+grouptype = <%= @groupType %>
+useldapgroups = TRUE
 
 # How do I find staff
-staff = cn=staff,ou=groups,dc=example,dc=com
+staff = <%= @staff %>
 <% end %>
