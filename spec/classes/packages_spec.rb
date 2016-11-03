@@ -40,7 +40,7 @@ describe 'ratticdb::packages' do
     it { should contain_package('lxml').with_ensure('3.3.3') }
     it { should contain_package('celery').with_ensure('3.1.11') }
     it { should contain_package('django-celery').with_ensure('3.1.10') }
-    it { should contain_package('importlib').with_ensure('latest') }
+    it { should contain_package('importlib').with_ensure('1.0.4') }
     it { should contain_package('django-social-auth').with_ensure('0.7.9') }
     it { should contain_package('paramiko').with_ensure('1.15.2') }
     it { should contain_package('kombu').with_ensure('3.0.26') }

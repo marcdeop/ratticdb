@@ -158,7 +158,7 @@ class ratticdb::packages {
     provider => 'pip',
   } ->
   package { 'importlib':
-    ensure   => 'latest',
+    ensure   => '1.0.4',
     provider => 'pip',
   } ->
   package { 'django-social-auth':
