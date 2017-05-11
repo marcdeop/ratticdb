@@ -92,42 +92,42 @@ describe 'ratticdb' do
   end
 
   context 'userBase => wrong userBase' do
-    let(:params) { {:userBase => :undef } }
+    let(:params) { { :userBase => '123' } }
     it do
       is_expected.to raise_error(/userBase must be a valid string/)
     end
   end
 
   context 'userFilter => wrong userFilter' do
-    let(:params) { {:userFilter => nil } }
+    let(:params) { {:userFilter => '123' } }
     it do
       is_expected.to raise_error(/userFilter must be a valid string/)
     end
   end
 
-  context 'groupBase => wrong groupbase' do
-    let(:params) { {:groupBase => nil } }
+  context 'groupBase => wrong groupBase' do
+    let(:params) { {:groupBase => '123' } }
     it do
       is_expected.to raise_error(/groupBase must be a valid string/)
     end
   end
 
   context 'groupFilter => wrong groupFilter' do
-    let(:params) { {:groupFilter => nil } }
+    let(:params) { {:groupFilter => '123' } }
     it do
       is_expected.to raise_error(/groupFilter must be a valid string/)
     end
   end
 
   context 'groupType => wrong groupType' do
-    let(:params) { {:groupType => nil } }
+    let(:params) { {:groupType => '123' } }
     it do
       is_expected.to raise_error(/groupType must be a valid string/)
     end
   end
 
   context 'staff => wrong staff' do
-    let(:params) { {:staff => nil } }
+    let(:params) { {:staff => '123' } }
     it do
       is_expected.to raise_error(/staff must be a valid string/)
     end

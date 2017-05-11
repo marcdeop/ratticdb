@@ -108,6 +108,10 @@ class ratticdb (
     fail('groupType must be a valid string')
   }
 
+  if !is_string($staff) {
+    fail('staff must be a valid string')
+  }
+
   if !is_domain_name($url) {
     fail('url must be a valid domain name')
   }

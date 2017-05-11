@@ -3,6 +3,7 @@ class ratticdb::params {
   case $::osfamily {
     'debian': {
       $managingClass  = 'apt'
+      $pythonPip      = 'python-pip'
       $pythonDev      = 'python-dev'
       $libxml2Dev     = 'libxml2-dev'
       $libxslt1Dev    = 'libxslt1-dev'
@@ -15,6 +16,7 @@ class ratticdb::params {
     }
     'redhat': {
       $managingClass  = 'epel'
+      $pythonPip      = 'python2-pip'
       $pythonDev      = 'python-devel'
       $libxml2Dev     = 'libxml2-devel'
       $libxslt1Dev    = 'libxslt-devel'
