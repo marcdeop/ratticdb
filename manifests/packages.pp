@@ -23,7 +23,7 @@ class ratticdb::packages {
     ensure  => latest,
     require => Class[$::ratticdb::params::managingClass],
   } ->
-  package { 'python-pip':
+  package { $::ratticdb::params::pythonPip:
     ensure => latest,
   } ->
   package { $::ratticdb::params::pythonDev:
