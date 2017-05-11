@@ -1,0 +1,46 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = '2'
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.provider :libvirt do |domain|
+    domain.memory = 2048
+    domain.cpus = 2
+  end
+
+  config.vm.define 'jessie' do |debian|
+    debian.vm.box =      'puppetlabs/debian-8.2-64-puppet'
+    debian.vm.hostname = 'jessie.example.org'
+  end
+
+  config.vm.define 'trusty' do |trusty|
+    trusty.vm.box =      'puppetlabs/ubuntu-14.04-64-puppet'
+    trusty.vm.hostname = 'trusty.example.org'
+  end
+
+  config.vm.define 'xenial' do |xenial|
+    xenial.vm.box =      'puppetlabs/ubuntu-16.04-64-puppet'
+    xenial.vm.hostname = 'xenial.example.org'
+  end
+
+  config.vm.define 'centos6' do |centos6|
+    centos6.vm.box =      'puppetlabs/centos-6.6-64-puppet'
+    centos6.vm.hostname = 'centos6.example.org'
+  end
+
+  config.vm.define 'centos7' do |centos7|
+    centos7.vm.box =      'puppetlabs/centos-7.2-64-puppet'
+    centos7.vm.hostname = 'centos7.example.org'
+  end
+
+  config.vm.provision :puppet do |puppet|
+    puppet.environment =      'production'
+    puppet.environment_path = 'environments'
+    puppet.manifests_path =   'environments/production/manifests'
+    puppet.module_path =      ['../../', 'modules']
+    puppet.options =          '--verbose'
+    puppet.manifest_file =    'site.pp'
+  end
+end
