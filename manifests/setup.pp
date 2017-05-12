@@ -1,4 +1,5 @@
-#
+# This classed is not supposed to be called externally.
+# @summary Installs and configures ratticdb
 class ratticdb::setup {
   $url          = $::ratticdb::url
   $app_folder   = $::ratticdb::app_folder

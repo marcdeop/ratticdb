@@ -1,4 +1,5 @@
-#
+# This classed is not supposed to be called externally.
+# @summary This will take care of installing and configuring httpd
 class ratticdb::apache {
   if $::ratticdb::apache {
     class { '::apache':

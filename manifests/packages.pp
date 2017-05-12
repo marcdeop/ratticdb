@@ -1,4 +1,5 @@
-#
+# This classed is not supposed to be called externally.
+# @summary Takes care of installing all dependencies that ratticdb requires
 class ratticdb::packages {
   include ratticdb::params
   case $::osfamily {

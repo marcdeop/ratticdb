@@ -1,4 +1,5 @@
-#
+# This classed is not supposed to be called externally.
+# @summary This will take care of installing and configuring mysql
 class ratticdb::mysql {
   case $::osfamily {
     'debian': {

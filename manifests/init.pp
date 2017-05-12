@@ -1,40 +1,59 @@
-# == Class: ratticdb
+# Module to install ratticdb
 #
-# Full description of class ratticdb here.
+# By default, this module will try to install everything that is needed to
+# setup a ratticdb application.
 #
-# === Parameters
+# This means that by default Apache httpd and Mysql will be installed
 #
-# Document parameters here.
+# The webserver will take care of redirecting the http traffic to https
+# @summary This module installs ratticdb and its dependencies
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# @author Marc Deop <marc@marcdeop.com>
 #
-# === Variables
+# @see https://github.com/tildaslash/RatticWeb
 #
-# Here you should define a list of variables that this module would require.
+# @see https://github.com/tildaslash/RatticWeb/wiki
 #
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
+# @example Declaring the class
+#   include ratticdb
 #
-# === Examples
-#
-#  class { 'ratticdb':
-#    mysql => false,
+# @example Specifying the url to listen to
+#  class { '::ratticdb':
+#    url => 'xenial.example.org'
 #  }
 #
-# === Authors
+# @example Do not install apache, we will handle the webserver elsewhere
+#  class { '::ratticdb':
+#    apache => false
+#  }
 #
-# Marc Deop <marc@marcdeop.com>
+# @example Do not install mysql, we will handle the database elsewhere
+#  class { '::ratticdb':
+#    mysql => false
+#  }
 #
-# === Copyright
-#
-# Copyright 2016 Marc Deop, unless otherwise noted.
-#
+# @param app_folder Specifies where to install ratticdb
+# @param apache Whether to install apache or not
+# @param mysql Whether to install mysql or not
+# @param url Url to listen to
+# @param version ratticdb version to install
+# @param ldap Whether to enable ldap or not
+# @param ldap_server Address of the ldap server
+# @param user_base Where the users are located on the ldap server
+# @param user_filter Which field is used to identify users on the ldap server
+# @param group_base Where the groups are located on the ldap server
+# @param group_filter Which field is used to identify groups on the ldap server
+# @param group_type Defines the type of group that ratticdb will read
+# @param staff Group that is considered ratticdb admin on the ldap server
+# @param db_name Database name that ratticdb will use
+# @param db_user Username that ratticdb will use when connecting to db_name
+# @param db_user_pwd Password of db_user
+# @param db_host Host where the database is
+# @param db_port Port where the database listens to
+# @param ssl_cert_path Path where the the SSL cert is located
+# @param ssl_cert_key_path Path where the SSL cert key is located
+# @param ssl_cert SSL certificate that we want to use
+# @param ssl_key  SSL certificate private key
 class ratticdb (
   $app_folder        = '/opt/apps/RatticWeb',
   $apache            = true,
