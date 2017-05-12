@@ -21,33 +21,33 @@ class ratticdb::packages {
   }
   package { 'python':
     ensure  => latest,
-    require => Class[$::ratticdb::params::managingClass],
+    require => Class[$::ratticdb::params::managing_class],
   } ->
-  package { $::ratticdb::params::pythonPip:
+  package { $::ratticdb::params::python_pip:
     ensure => latest,
   } ->
-  package { $::ratticdb::params::pythonDev:
+  package { $::ratticdb::params::python_dev:
     ensure => latest,
   } ->
-  package { $::ratticdb::params::libxml2Dev:
+  package { $::ratticdb::params::libxml2_dev:
     ensure => latest,
   } ->
-  package { $::ratticdb::params::libxslt1Dev:
+  package { $::ratticdb::params::libxslt1_dev:
     ensure => latest,
   } ->
   package { 'gcc':
     ensure => latest,
   } ->
-  package { $::ratticdb::params::mysqlDev:
+  package { $::ratticdb::params::mysql_dev:
     ensure => latest,
   } ->
-  package { $::ratticdb::params::sslDev:
+  package { $::ratticdb::params::ssl_dev:
     ensure => latest,
   } ->
-  package { $::ratticdb::params::libldap2Dev:
+  package { $::ratticdb::params::libldap2_dev:
     ensure => latest,
   } ->
-  package { $::ratticdb::params::libsasl2Dev:
+  package { $::ratticdb::params::libsasl2_dev:
     ensure => latest,
   } ->
   package { 'gettext':

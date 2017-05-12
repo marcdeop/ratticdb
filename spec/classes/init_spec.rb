@@ -49,10 +49,10 @@ describe 'ratticdb' do
 
   end
 
-  context 'appFolder => wrongPath' do
-    let(:params) { {:appFolder => 'This is a wrong path' } }
+  context 'app_folder => wrongPath' do
+    let(:params) { {:app_folder => 'This is a wrong path' } }
     it do
-      is_expected.to raise_error(/appFolder must be an absolute path/)
+      is_expected.to raise_error(/app_folder must be an absolute path/)
     end
   end
 
@@ -84,45 +84,45 @@ describe 'ratticdb' do
     end
   end
 
-  context 'ldapServer => wrong Domain' do
-    let(:params) { {:ldapServer => 'wrong Domain' } }
+  context 'ldap_server => wrong Domain' do
+    let(:params) { {:ldap_server => 'wrong Domain' } }
     it do
-      is_expected.to raise_error(/ldapServer must be a valid domain name/)
+      is_expected.to raise_error(/ldap_server must be a valid domain name/)
     end
   end
 
-  context 'userBase => wrong userBase' do
-    let(:params) { { :userBase => '123' } }
+  context 'user_base => wrong user_base' do
+    let(:params) { { :user_base => '123' } }
     it do
-      is_expected.to raise_error(/userBase must be a valid string/)
+      is_expected.to raise_error(/user_base must be a valid string/)
     end
   end
 
-  context 'userFilter => wrong userFilter' do
-    let(:params) { {:userFilter => '123' } }
+  context 'user_filter => wrong user_filter' do
+    let(:params) { {:user_filter => '123' } }
     it do
-      is_expected.to raise_error(/userFilter must be a valid string/)
+      is_expected.to raise_error(/user_filter must be a valid string/)
     end
   end
 
-  context 'groupBase => wrong groupBase' do
-    let(:params) { {:groupBase => '123' } }
+  context 'group_base => wrong group_base' do
+    let(:params) { {:group_base => '123' } }
     it do
-      is_expected.to raise_error(/groupBase must be a valid string/)
+      is_expected.to raise_error(/group_base must be a valid string/)
     end
   end
 
-  context 'groupFilter => wrong groupFilter' do
-    let(:params) { {:groupFilter => '123' } }
+  context 'group_filter => wrong group_filter' do
+    let(:params) { {:group_filter => '123' } }
     it do
-      is_expected.to raise_error(/groupFilter must be a valid string/)
+      is_expected.to raise_error(/group_filter must be a valid string/)
     end
   end
 
-  context 'groupType => wrong groupType' do
-    let(:params) { {:groupType => '123' } }
+  context 'group_type => wrong group_type' do
+    let(:params) { {:group_type => '123' } }
     it do
-      is_expected.to raise_error(/groupType must be a valid string/)
+      is_expected.to raise_error(/group_type must be a valid string/)
     end
   end
 

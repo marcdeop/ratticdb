@@ -1,34 +1,34 @@
 #
 class ratticdb::setup {
-  $url         = $::ratticdb::url
-  $appFolder   = $::ratticdb::appFolder
-  $ldap        = $::ratticdb::ldap
-  $dbName      = $::ratticdb::dbName
-  $dbUser      = $::ratticdb::dbUser
-  $dbUserPwd   = $::ratticdb::dbUserPwd
-  $dbHost      = $::ratticdb::dbHost
-  $dbPort      = $::ratticdb::dbPort
-  $version     = $::ratticdb::version
-  $ldapServer  = $::ratticdb::ldapServer
-  $userBase    = $::ratticdb::userBase
-  $userFilter  = $::ratticdb::userFilter
-  $groupBase   = $::ratticdb::groupBase
-  $groupFilter = $::ratticdb::groupFilter
-  $groupType   = $::ratticdb::groupType
-  $staff       = $::ratticdb::staff
+  $url          = $::ratticdb::url
+  $app_folder   = $::ratticdb::app_folder
+  $ldap         = $::ratticdb::ldap
+  $db_name      = $::ratticdb::db_name
+  $db_user      = $::ratticdb::db_user
+  $db_user_pwd  = $::ratticdb::db_user_pwd
+  $db_host      = $::ratticdb::db_host
+  $db_port      = $::ratticdb::db_port
+  $version      = $::ratticdb::version
+  $ldap_server  = $::ratticdb::ldap_server
+  $user_base    = $::ratticdb::user_base
+  $user_filter  = $::ratticdb::user_filter
+  $group_base   = $::ratticdb::group_base
+  $group_filter = $::ratticdb::group_filter
+  $group_type   = $::ratticdb::group_type
+  $staff        = $::ratticdb::staff
 
-  $baseDir = dirname($appFolder)
+  $base_dir = dirname($app_folder)
 
-  $dirTree = dirtree($baseDir)
-  ensure_resource('file', $dirTree, {'ensure' => 'directory'})
+  $dir_tree = dirtree($base_dir)
+  ensure_resource('file', $dir_tree, {'ensure' => 'directory'})
 
   exec { 'wget' :
     command => "wget https://github.com/tildaslash/RatticWeb/archive/v${version}.tar.gz",
-    cwd     => $baseDir,
-    creates => "${baseDir}/v${version}.tar.gz",
+    cwd     => $base_dir,
+    creates => "${base_dir}/v${version}.tar.gz",
     path    => '/usr/bin/',
-    require => File[$baseDir],
-    onlyif  => "test ! -e ${appFolder}-${version}"
+    require => File[$base_dir],
+    onlyif  => "test ! -e ${app_folder}-${version}"
   }
 
   exec { 'extract' :
@@ -41,19 +41,19 @@ class ratticdb::setup {
 
   file {'link':
     ensure  => 'link',
-    path    => $appFolder,
-    target  => "${appFolder}-${version}",
+    path    => $app_folder,
+    target  => "${app_folder}-${version}",
     require => Exec['extract'],
   }
 
   file { 'confFile':
     ensure  => 'file',
-    path    => "${appFolder}/conf/local.cfg",
+    path    => "${app_folder}/conf/local.cfg",
     content => template('ratticdb/local.cfg.erb'),
     require => File['link'],
   }
 
-  file { "${appFolder}/static" :
+  file { "${app_folder}/static" :
     ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
@@ -64,8 +64,8 @@ class ratticdb::setup {
   exec { 'setup':
     command     => "manage.py syncdb --noinput && manage.py migrate \
       && manage.py collectstatic --noinput && manage.py compilemessages",
-    cwd         => $appFolder,
-    path        => "/usr/bin/:/bin/:${appFolder}",
+    cwd         => $app_folder,
+    path        => "/usr/bin/:/bin/:${app_folder}",
     require     => File['confFile'],
     subscribe   => File['confFile'],
     refreshonly => true,

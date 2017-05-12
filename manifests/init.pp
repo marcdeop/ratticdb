@@ -36,76 +36,76 @@
 # Copyright 2016 Marc Deop, unless otherwise noted.
 #
 class ratticdb (
-  $appFolder      = '/opt/apps/RatticWeb',
-  $apache         = true,
-  $mysql          = true,
-  $url            = 'ratticdb.example.org',
-  $version        = '1.3.1',
-  $ldap           = false,
-  $ldapServer     = 'ldap.example.org',
-  $userBase       = 'ou=users,dc=example,dc=com',
-  $userFilter     = '(uid=%(user)s)',
-  $groupBase      = 'ou=django,ou=groups,dc=example,dc=com',
-  $groupFilter    = '(objectClass=groupOfNames)',
-  $groupType      = 'GroupOfNamesType',
-  $staff          = 'cn=staff,ou=groups,dc=example,dc=com',
-  $dbName         = 'ratticdb',
-  $dbUser         = 'ratticDbUser',
-  $dbUserPwd      = 'ratticDbUserPassword',
-  $dbHost         = 'localhost',
-  $dbPort         = '3306',
-  $sslCertPath    = $::ratticdb::params::sslCertPath,
-  $sslCertKeyPath = $::ratticdb::params::sslCertKeyPath,
-  $sslCert        = undef,
-  $sslKey         = undef,
+  $app_folder        = '/opt/apps/RatticWeb',
+  $apache            = true,
+  $mysql             = true,
+  $url               = 'ratticdb.example.org',
+  $version           = '1.3.1',
+  $ldap              = false,
+  $ldap_server       = 'ldap.example.org',
+  $user_base         = 'ou=users,dc=example,dc=com',
+  $user_filter       = '(uid=%(user)s)',
+  $group_base        = 'ou=django,ou=groups,dc=example,dc=com',
+  $group_filter      = '(objectClass=groupOfNames)',
+  $group_type        = 'GroupOfNamesType',
+  $staff             = 'cn=staff,ou=groups,dc=example,dc=com',
+  $db_name           = 'ratticdb',
+  $db_user           = 'ratticDbUser',
+  $db_user_pwd       = 'ratticDbUserPassword',
+  $db_host           = 'localhost',
+  $db_port           = '3306',
+  $ssl_cert_path     = $::ratticdb::params::ssl_cert_path,
+  $ssl_cert_key_path = $::ratticdb::params::ssl_cert_key_path,
+  $ssl_cert          = undef,
+  $ssl_key           = undef,
   ) inherits ::ratticdb::params {
 
-  if !is_integer($dbPort) {
-    fail('dbPort must be a valid integer')
+  if !is_integer($db_port) {
+    fail('db_port must be a valid integer')
   }
 
-  if !is_string($dbUser) {
-    fail('dbUser must be a valid string')
+  if !is_string($db_user) {
+    fail('db_user must be a valid string')
   }
 
-  if !is_string($dbName) {
-    fail('dbName must be a valid string')
+  if !is_string($db_name) {
+    fail('db_name must be a valid string')
   }
 
-  if !is_string($dbUserPwd) {
-    fail('dbUserPwd must be a valid string')
+  if !is_string($db_user_pwd) {
+    fail('db_user_pwd must be a valid string')
   }
 
-  if !is_domain_name($dbHost) {
-    fail('dbHost must be a valid domain name')
+  if !is_domain_name($db_host) {
+    fail('db_host must be a valid domain name')
   }
 
   if !is_bool($ldap) {
     fail('ldap must be a boolean')
   }
 
-  if !is_domain_name($ldapServer) {
-    fail('ldapServer must be a valid domain name')
+  if !is_domain_name($ldap_server) {
+    fail('ldap_server must be a valid domain name')
   }
 
-  if !is_string($userBase) {
-    fail('userBase must be a valid string')
+  if !is_string($user_base) {
+    fail('user_base must be a valid string')
   }
 
-  if !is_string($userFilter) {
-    fail('userFilter must be a valid string')
+  if !is_string($user_filter) {
+    fail('user_filter must be a valid string')
   }
 
-  if !is_string($groupBase) {
-    fail('groupBase must be a valid string')
+  if !is_string($group_base) {
+    fail('group_base must be a valid string')
   }
 
-  if !is_string($groupFilter) {
-    fail('groupFilter must be a valid string')
+  if !is_string($group_filter) {
+    fail('group_filter must be a valid string')
   }
 
-  if !is_string($groupType) {
-    fail('groupType must be a valid string')
+  if !is_string($group_type) {
+    fail('group_type must be a valid string')
   }
 
   if !is_string($staff) {
@@ -116,8 +116,8 @@ class ratticdb (
     fail('url must be a valid domain name')
   }
 
-  if !is_absolute_path($appFolder) {
-    fail('appFolder must be an absolute path')
+  if !is_absolute_path($app_folder) {
+    fail('app_folder must be an absolute path')
   }
 
   if !is_bool($mysql) {
