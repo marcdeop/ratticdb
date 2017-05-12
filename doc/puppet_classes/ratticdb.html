@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Puppet Class: ratticdb
+  
+    &mdash; Documentation by YARD 0.9.9
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "puppet_classes::ratticdb";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../puppet_class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (r)</a> &raquo;
+    <span class='title'><span class='object_link'>Puppet Classes</span></span>
+     &raquo; 
+    <span class="title">ratticdb</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="puppet_class_list_link"
+        href="../puppet_class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Puppet Class: ratticdb</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>::ratticdb::params</dd>
+  </dl>
+  
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>
+      manifests/init.pp
+    </dd>
+  </dl>
+</div>
+
+  <h2>Summary</h2>
+  This module installs ratticdb and its dependencies
+
+<h2>Overview</h2>
+<div class="docstring">
+  <div class="discussion">
+    
+<p>Module to install ratticdb</p>
+
+<p>By default, this module will try to install everything that is needed to
+setup a ratticdb application.</p>
+
+<p>This means that by default Apache httpd and Mysql will be installed</p>
+
+<p>The webserver will take care of redirecting the http traffic to https</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Declaring the class</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_ratticdb'>ratticdb</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Specifying the url to listen to</p>
+</div></p>
+      
+      <pre class="example code"><code>class { &#39;::ratticdb&#39;:
+  url =&gt; &#39;xenial.example.org&#39;
+}</code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Do not install apache, we will handle the webserver elsewhere</p>
+</div></p>
+      
+      <pre class="example code"><code>class { &#39;::ratticdb&#39;:
+  apache =&gt; false
+}</code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Do not install mysql, we will handle the database elsewhere</p>
+</div></p>
+      
+      <pre class="example code"><code>class { &#39;::ratticdb&#39;:
+  mysql =&gt; false
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>app_folder</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;/opt/apps/RatticWeb&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Specifies where to install ratticdb</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>apache</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to install apache or not</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mysql</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to install mysql or not</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;ratticdb.example.org&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Url to listen to</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>version</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;1.3.1&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ratticdb version to install</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ldap</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to enable ldap or not</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ldap_server</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;ldap.example.org&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Address of the ldap server</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user_base</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;ou=users,dc=example,dc=com&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Where the users are located on the ldap server</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user_filter</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;(uid=%(user)s)&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Which field is used to identify users on the ldap server</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group_base</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;ou=django,ou=groups,dc=example,dc=com&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Where the groups are located on the ldap server</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group_filter</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;(objectClass=groupOfNames)&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Which field is used to identify groups on the ldap server</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group_type</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;GroupOfNamesType&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Defines the type of group that ratticdb will read</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>staff</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;cn=staff,ou=groups,dc=example,dc=com&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Group that is considered ratticdb admin on the ldap server</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>db_name</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;ratticdb&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Database name that ratticdb will use</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>db_user</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;ratticDbUser&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Username that ratticdb will use when connecting to db_name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>db_user_pwd</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;ratticDbUserPassword&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Password of db_user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>db_host</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;localhost&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Host where the database is</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>db_port</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;3306&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Port where the database listens to</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ssl_cert_path</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ratticdb::params::ssl_cert_path</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Path where the the SSL cert is located</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ssl_cert_key_path</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$::ratticdb::params::ssl_cert_key_path</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Path where the SSL cert key is located</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ssl_cert</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>SSL certificate that we want to use</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ssl_key</span>
+      
+      
+        <span class='type'>(<tt>Any</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>SSL certificate private key</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://github.com/tildaslash/RatticWeb" target="_parent" title="https://github.com/tildaslash/RatticWeb">https://github.com/tildaslash/RatticWeb</a></li>
+    
+      <li><a href="https://github.com/tildaslash/RatticWeb/wiki" target="_parent" title="https://github.com/tildaslash/RatticWeb/wiki">https://github.com/tildaslash/RatticWeb/wiki</a></li>
+    
+  </ul>
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Marc Deop <a href="mailto:marc@marcdeop.com">marc@marcdeop.com</a></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><div class="method_details_list">
+  <table class="source_code">
+    <tr>
+      <td>
+        <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156</pre>
+      </td>
+      <td>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 57</span>
+
+class ratticdb (
+  $app_folder        = &#39;/opt/apps/RatticWeb&#39;,
+  $apache            = true,
+  $mysql             = true,
+  $url               = &#39;ratticdb.example.org&#39;,
+  $version           = &#39;1.3.1&#39;,
+  $ldap              = false,
+  $ldap_server       = &#39;ldap.example.org&#39;,
+  $user_base         = &#39;ou=users,dc=example,dc=com&#39;,
+  $user_filter       = &#39;(uid=%(user)s)&#39;,
+  $group_base        = &#39;ou=django,ou=groups,dc=example,dc=com&#39;,
+  $group_filter      = &#39;(objectClass=groupOfNames)&#39;,
+  $group_type        = &#39;GroupOfNamesType&#39;,
+  $staff             = &#39;cn=staff,ou=groups,dc=example,dc=com&#39;,
+  $db_name           = &#39;ratticdb&#39;,
+  $db_user           = &#39;ratticDbUser&#39;,
+  $db_user_pwd       = &#39;ratticDbUserPassword&#39;,
+  $db_host           = &#39;localhost&#39;,
+  $db_port           = &#39;3306&#39;,
+  $ssl_cert_path     = $::ratticdb::params::ssl_cert_path,
+  $ssl_cert_key_path = $::ratticdb::params::ssl_cert_key_path,
+  $ssl_cert          = undef,
+  $ssl_key           = undef,
+  ) inherits ::ratticdb::params {
+
+  if !is_integer($db_port) {
+    fail(&#39;db_port must be a valid integer&#39;)
+  }
+
+  if !is_string($db_user) {
+    fail(&#39;db_user must be a valid string&#39;)
+  }
+
+  if !is_string($db_name) {
+    fail(&#39;db_name must be a valid string&#39;)
+  }
+
+  if !is_string($db_user_pwd) {
+    fail(&#39;db_user_pwd must be a valid string&#39;)
+  }
+
+  if !is_domain_name($db_host) {
+    fail(&#39;db_host must be a valid domain name&#39;)
+  }
+
+  if !is_bool($ldap) {
+    fail(&#39;ldap must be a boolean&#39;)
+  }
+
+  if !is_domain_name($ldap_server) {
+    fail(&#39;ldap_server must be a valid domain name&#39;)
+  }
+
+  if !is_string($user_base) {
+    fail(&#39;user_base must be a valid string&#39;)
+  }
+
+  if !is_string($user_filter) {
+    fail(&#39;user_filter must be a valid string&#39;)
+  }
+
+  if !is_string($group_base) {
+    fail(&#39;group_base must be a valid string&#39;)
+  }
+
+  if !is_string($group_filter) {
+    fail(&#39;group_filter must be a valid string&#39;)
+  }
+
+  if !is_string($group_type) {
+    fail(&#39;group_type must be a valid string&#39;)
+  }
+
+  if !is_string($staff) {
+    fail(&#39;staff must be a valid string&#39;)
+  }
+
+  if !is_domain_name($url) {
+    fail(&#39;url must be a valid domain name&#39;)
+  }
+
+  if !is_absolute_path($app_folder) {
+    fail(&#39;app_folder must be an absolute path&#39;)
+  }
+
+  if !is_bool($mysql) {
+    fail(&#39;mysql must be a boolean&#39;)
+  }
+
+  if !is_bool($apache) {
+    fail(&#39;apache must be a boolean&#39;)
+  }
+
+  anchor { &#39;ratticdb::begin&#39;: }
+    -&gt; class { &#39;ratticdb::packages&#39;: }
+    -&gt; class { &#39;ratticdb::mysql&#39;: }
+    -&gt; class { &#39;ratticdb::setup&#39;: }
+    -&gt; class { &#39;ratticdb::apache&#39;: }
+  -&gt; anchor { &#39;ratticdb::end&#39;: }
+}</pre>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+      <div id="footer">
+  Generated on Fri May 12 14:16:47 2017 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.9 (ruby-2.3.3).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,4 +1,5 @@
-#
+# This classed is not supposed to be called externally.
+# @summary Defines parameters for the different supported Operating Systems
 class ratticdb::params {
   case $::osfamily {
     'debian': {
