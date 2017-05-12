@@ -8,18 +8,18 @@ class ratticdb::apache {
     apache::vhost {"redirect-${::ratticdb::url}":
       servername      => $::ratticdb::url,
       port            => '80',
-      docroot         => $::ratticdb::appFolder,
+      docroot         => $::ratticdb::app_folder,
       redirect_status => 'permanent',
       redirect_dest   => "https://${::ratticdb::url}",
       manage_docroot  => false,
     }
 
-    if $::ratticdb::sslCert != undef {
-      file { $::ratticdb::sslCertPath:
-        content => $::ratticdb::sslCert,
+    if $::ratticdb::ssl_cert != undef {
+      file { $::ratticdb::ssl_cert_path:
+        content => $::ratticdb::ssl_cert,
       }
-      file { $::ratticdb::sslCertKeyPath:
-        content => $::ratticdb::sslKeyCert,
+      file { $::ratticdb::ssl_cert_key_path:
+        content => $::ratticdb::ssl_key,
       }
     }
 
@@ -27,9 +27,9 @@ class ratticdb::apache {
       port                        => '443',
       ssl                         => true,
       ssl_honorcipherorder        => 'on',
-      ssl_cert                    => $::ratticdb::sslCertPath,
-      ssl_key                     => $::ratticdb::sslCertKeyPath,
-      docroot                     => $::ratticdb::appFolder,
+      ssl_cert                    => $::ratticdb::ssl_cert_path,
+      ssl_key                     => $::ratticdb::ssl_cert_key_path,
+      docroot                     => $::ratticdb::app_folder,
       manage_docroot              => false,
       wsgi_application_group      => '%{GLOBAL}',
       wsgi_daemon_process         => 'rattic',
@@ -37,13 +37,13 @@ class ratticdb::apache {
         processes    => '2',
         threads      => '25',
         display-name => '%{GROUP}',
-        home         => $::ratticdb::appFolder,
-        python-path  => $::ratticdb::appFolder
+        home         => $::ratticdb::app_folder,
+        python-path  => $::ratticdb::app_folder
       },
       wsgi_pass_authorization     => 'on',
       wsgi_process_group          => 'rattic',
       wsgi_script_aliases         => {
-        '/' => "${::ratticdb::appFolder}/ratticweb/wsgi.py"
+        '/' => "${::ratticdb::app_folder}/ratticweb/wsgi.py"
       },
       aliases                     => [
         {
@@ -52,19 +52,19 @@ class ratticdb::apache {
         },
         {
           alias => '/favicon.ico',
-          path  => "${::ratticdb::appFolder}/static/favicon.ico",
+          path  => "${::ratticdb::app_folder}/static/favicon.ico",
         },
         {
           alias => '/robots.txt',
-          path  => "${::ratticdb::appFolder}/static/robots.txt",
+          path  => "${::ratticdb::app_folder}/static/robots.txt",
         },
         {
           alias => '/media',
-          path  => "${::ratticdb::appFolder}/media",
+          path  => "${::ratticdb::app_folder}/media",
         },
         {
           alias => '/static',
-          path  => "${::ratticdb::appFolder}/static",
+          path  => "${::ratticdb::app_folder}/static",
         },
       ],
     }

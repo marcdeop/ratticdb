@@ -13,9 +13,9 @@ class ratticdb::mysql {
   class { '::mysql::server':
   }
 
-  mysql::db { $::ratticdb::dbName:
-    user     => $::ratticdb::dbUser,
-    host     => $::ratticdb::dbHost,
-    password => $::ratticdb::dbUserPwd,
+  mysql::db { $::ratticdb::db_name:
+    user     => $::ratticdb::db_user,
+    host     => $::ratticdb::db_host,
+    password => $::ratticdb::db_user_pwd,
   }
 }
