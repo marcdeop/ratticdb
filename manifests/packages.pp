@@ -22,158 +22,158 @@ class ratticdb::packages {
   package { 'python':
     ensure  => latest,
     require => Class[$::ratticdb::params::managing_class],
-  } ->
-  package { $::ratticdb::params::python_pip:
+  }
+  -> package { $::ratticdb::params::python_pip:
     ensure => latest,
-  } ->
-  package { $::ratticdb::params::python_dev:
+  }
+  -> package { $::ratticdb::params::python_dev:
     ensure => latest,
-  } ->
-  package { $::ratticdb::params::libxml2_dev:
+  }
+  -> package { $::ratticdb::params::libxml2_dev:
     ensure => latest,
-  } ->
-  package { $::ratticdb::params::libxslt1_dev:
+  }
+  -> package { $::ratticdb::params::libxslt1_dev:
     ensure => latest,
-  } ->
-  package { 'gcc':
+  }
+  -> package { 'gcc':
     ensure => latest,
-  } ->
-  package { $::ratticdb::params::mysql_dev:
+  }
+  -> package { $::ratticdb::params::mysql_dev:
     ensure => latest,
-  } ->
-  package { $::ratticdb::params::ssl_dev:
+  }
+  -> package { $::ratticdb::params::ssl_dev:
     ensure => latest,
-  } ->
-  package { $::ratticdb::params::libldap2_dev:
+  }
+  -> package { $::ratticdb::params::libldap2_dev:
     ensure => latest,
-  } ->
-  package { $::ratticdb::params::libsasl2_dev:
+  }
+  -> package { $::ratticdb::params::libsasl2_dev:
     ensure => latest,
-  } ->
-  package { 'gettext':
+  }
+  -> package { 'gettext':
     ensure => latest,
-  } ->
-  package { 'Django' :
+  }
+  -> package { 'Django' :
     ensure   => '1.6',
     provider => 'pip',
-  } ->
-  package { 'Markdown':
+  }
+  -> package { 'Markdown':
     ensure   => '2.4',
     provider => 'pip',
-  } ->
-  package { 'MySQL-python':
+  }
+  -> package { 'MySQL-python':
     ensure   => '1.2.5',
     provider => 'pip',
-  } ->
-  package { 'Pillow':
+  }
+  -> package { 'Pillow':
     ensure   => '2.3.1',
     provider => 'pip',
-  } ->
-  package { 'South':
+  }
+  -> package { 'South':
     ensure   => '0.8.4',
     provider => 'pip',
-  } ->
-  package { 'django-auth-ldap':
+  }
+  -> package { 'django-auth-ldap':
     ensure   => '1.1.8',
     provider => 'pip',
-  } ->
-  package { 'django-database-files':
+  }
+  -> package { 'django-database-files':
     ensure   => '0.1',
     provider => 'pip',
-  } ->
-  package { 'django-otp':
+  }
+  -> package { 'django-otp':
     ensure   => '0.2.7',
     provider => 'pip',
-  } ->
-  package { 'django-tastypie':
+  }
+  -> package { 'django-tastypie':
     ensure   => '0.9.15',
     provider => 'pip',
-  } ->
-  package { 'django-two-factor-auth':
+  }
+  -> package { 'django-two-factor-auth':
     ensure   => '0.5.0',
     provider => 'pip',
-  } ->
-  package { 'django-user-sessions':
+  }
+  -> package { 'django-user-sessions':
     ensure   => '0.1.3',
     provider => 'pip',
-  } ->
-  package { 'mimeparse':
+  }
+  -> package { 'mimeparse':
     ensure   => '0.1.3',
     provider => 'pip',
-  } ->
-  package { 'pyasn1':
+  }
+  -> package { 'pyasn1':
     ensure   => '0.1.7',
     provider => 'pip',
-  } ->
-  package { 'pycrypto':
+  }
+  -> package { 'pycrypto':
     ensure   => '2.6',
     provider => 'pip',
-  } ->
-  package { 'python-dateutil':
+  }
+  -> package { 'python-dateutil':
     ensure   => '2.1',
     provider => 'pip',
-  } ->
-  package { 'python-ldap':
+  }
+  -> package { 'python-ldap':
     ensure   => '2.4.15',
     provider => 'pip',
-  } ->
-  package { 'python-mimeparse':
+  }
+  -> package { 'python-mimeparse':
     ensure   => '0.1.4',
     provider => 'pip',
-  } ->
-  package { 'six':
+  }
+  -> package { 'six':
     ensure   => '1.6.1',
     provider => 'pip',
-  } ->
-  package { 'urldecode':
+  }
+  -> package { 'urldecode':
     ensure   => '0.1',
     provider => 'pip',
-  } ->
-  package { 'wsgiref':
+  }
+  -> package { 'wsgiref':
     ensure   => '0.1.2',
     provider => 'pip',
-  } ->
-  package { 'keepassdb':
+  }
+  -> package { 'keepassdb':
     ensure   => '0.2.1',
     provider => 'pip',
-  } ->
-  package { 'db_backup':
+  }
+  -> package { 'db_backup':
     ensure   => '0.1.3',
     provider => 'pip',
-  } ->
-  package { 'boto':
+  }
+  -> package { 'boto':
     ensure   => '2.26.1',
     provider => 'pip',
-  } ->
-  package { 'lxml':
+  }
+  -> package { 'lxml':
     ensure   => '3.3.3',
     provider => 'pip',
-  } ->
-  package { 'celery':
+  }
+  -> package { 'celery':
     ensure   => '3.1.11',
     provider => 'pip',
-  } ->
-  package { 'django-celery':
+  }
+  -> package { 'django-celery':
     ensure   => '3.1.10',
     provider => 'pip',
-  } ->
-  package { 'importlib':
+  }
+  -> package { 'importlib':
     ensure   => '1.0.4',
     provider => 'pip',
-  } ->
-  package { 'django-social-auth':
+  }
+  -> package { 'django-social-auth':
     ensure   => '0.7.9',
     provider => 'pip',
-  } ->
-  package { 'paramiko':
+  }
+  -> package { 'paramiko':
     ensure   => '1.15.2',
     provider => 'pip',
-  } ->
-  package { 'kombu':
+  }
+  -> package { 'kombu':
     ensure   => '3.0.26',
     provider => 'pip',
-  } ->
-  package { 'ecdsa':
+  }
+  -> package { 'ecdsa':
     ensure   => '0.13',
     provider => 'pip',
   }

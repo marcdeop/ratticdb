@@ -128,10 +128,10 @@ class ratticdb (
     fail('apache must be a boolean')
   }
 
-  anchor { 'ratticdb::begin': } ->
-    class { 'ratticdb::packages': } ->
-    class { 'ratticdb::mysql': } ->
-    class { 'ratticdb::setup': } ->
-    class { 'ratticdb::apache': } ->
-  anchor { 'ratticdb::end': }
+  anchor { 'ratticdb::begin': }
+    -> class { 'ratticdb::packages': }
+    -> class { 'ratticdb::mysql': }
+    -> class { 'ratticdb::setup': }
+    -> class { 'ratticdb::apache': }
+  -> anchor { 'ratticdb::end': }
 }
