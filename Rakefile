@@ -15,6 +15,6 @@ end
 
 desc 'Generate all docucmentation'
 task :doc do
-  Rake::Task['strings:generate'].execute
   Rake::Task['doc:readme'].execute
+  Rake::Task['strings:generate'].execute
 end
